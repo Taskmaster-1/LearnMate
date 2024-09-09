@@ -1,0 +1,94 @@
+body {
+    color: #333;
+    font-family: 'Arial', sans-serif;
+}
+
+.stApp {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.stButton>button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.stButton>button:hover {
+    background-color: #45a049;
+}
+
+.stTextInput>div>div>input {
+    border-radius: 5px;
+}
+
+.stSelectbox>div>div>select {
+    border-radius: 5px;
+}
+
+.stTextArea textarea {
+    border-radius: 5px;
+}
+
+h1, h2, h3 {
+    color: #2C3E50;
+}
+
+.sidebar .sidebar-content {
+    background-color: #f1f1f1;
+}
+
+.stAlert {
+    background-color: #e7f3fe;
+    border-left-color: #2196F3;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.user-message {
+    background-color: #e1f5fe;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.bot-message {
+    background-color: #f0f4c3;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.grid-item {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.grid-item h3 {
+    margin-top: 0;
+}

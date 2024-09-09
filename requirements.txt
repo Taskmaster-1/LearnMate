@@ -1,0 +1,14 @@
+Flask
+streamlit
+google-generativeai
+pytesseract
+PyPDF2
+python-docx
+google-cloud-texttospeech
+openai
+torch>=2.2.0
+transformers>=4.32.1
+python-dotenv
+google-cloud-speech
+pyaudio
+scikit-learn
