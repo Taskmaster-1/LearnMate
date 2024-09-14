@@ -1,30 +1,57 @@
 import streamlit as st
 from PIL import Image
-import pytesseract
-import PyPDF2
+import os
+from dotenv import load_dotenv
+import google.generativeai as genai
 
-def extract_text_from_image(image):
-    return pytesseract.image_to_string(image)
+# Load environment variables
+load_dotenv()
 
-def extract_text_from_pdf(file):
-    reader = PyPDF2.PdfReader(file)
-    text = ""
-    for page in range(len(reader.pages)):
-        text += reader.pages[page].extract_text()
-    return text
+# Configure Google AI
+genai.configure(api_key=os.getenv("GOOGLE-API-KEY"))
+
+def get_gemini_response(input_prompt, image_data, user_input):
+    model = genai.GenerativeModel('gemini-1.5-flash')
+    response = model.generate_content([input_prompt, image_data[0], user_input])
+    return response.text
+
+def input_image_setup(uploaded_file):
+    if uploaded_file is not None:
+        bytes_data = uploaded_file.getvalue()
+        image_parts = [
+            {
+                "mime_type": uploaded_file.type,
+                "data": bytes_data
+            }
+        ]
+        return image_parts
+    else:
+        raise FileNotFoundError("No file uploaded")
 
 def run_invoice_extractor():
-    st.title("Invoice Extractor")
+    st.header("Invoice Extractor")
 
-    uploaded_file = st.file_uploader("Upload Invoice (Image/PDF)", type=['jpg', 'png', 'pdf'])
-
+    uploaded_file = st.file_uploader("Upload Invoice (Image)", type=['jpg', 'jpeg', 'png'])
+    
     if uploaded_file:
-        with st.spinner("Extracting text..."):
-            if uploaded_file.type == "application/pdf":
-                text = extract_text_from_pdf(uploaded_file)
-            else:
-                image = Image.open(uploaded_file)
-                text = extract_text_from_image(image)
-        
-        st.subheader("Extracted Invoice Text")
-        st.write(text)
+        image = Image.open(uploaded_file)
+        st.image(image, caption="Uploaded Invoice.", use_column_width=True)
+
+        user_input = st.text_input("Ask a question about the invoice:", key="input")
+
+        input_prompt = """
+        You are an expert in understanding invoices.
+        You will receive input images as invoices &
+        you will have to answer questions based on the input image
+        """
+
+        if st.button("Analyze Invoice"):
+            with st.spinner("Analyzing invoice..."):
+                image_data = input_image_setup(uploaded_file)
+                response = get_gemini_response(input_prompt, image_data, user_input)
+            
+            st.subheader("Analysis Result")
+            st.write(response)
+
+#if __name__ == "__main__":
+#    run_invoice_extractor()

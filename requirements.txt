@@ -12,3 +12,4 @@ python-dotenv
 google-cloud-speech
 pyaudio
 scikit-learn
+google-cloud-translate==3.0.2
