@@ -10,6 +10,6 @@ torch>=2.2.0
 transformers>=4.32.1
 python-dotenv
 google-cloud-speech
-pyaudio
+#pyaudio
 scikit-learn
 google-cloud-translate==3.0.2
