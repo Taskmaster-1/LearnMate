@@ -137,7 +137,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Vivek Yadav**  
 📧 Email: vivekyad5223@gmail.com  
-🔗 LinkedIn: [linkedin.com/in/vivekyadav](https://linkedin.com/in/vivekyadav)  
+🔗 LinkedIn: [linkedin.com/in/taskmaster](https://linkedin.com/in/taskmaster)  
 🐙 GitHub: [@Taskmaster-1](https://github.com/Taskmaster-1)
 
 ---
